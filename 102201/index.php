@@ -48,8 +48,9 @@ include_once "base.php";
 				if(file_exists($file)){
 					include $file;
 				}else{
-					//echo "檔案不存在";
-					include "./front/main.php";
+				// 寫法一: echo "檔案不存在";
+				// 寫法二:檔案不存在就include main.php:
+                include "./front/main.php"; 
 				}	
 				?>
             <div id="alt"
