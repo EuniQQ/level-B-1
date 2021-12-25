@@ -1,12 +1,18 @@
-<h3>新增動態文字廣告</h3>
+<h3>新增標題圖片</h3>
 <hr>
-<form action="" method="post" enctype="">
+                              <!-- 有上傳檔案就需要打enctype="multipart/-form-data -->
+<form action="" method="post" enctype="multipart/-form-data">    
     <table>
         <tr>
-            <td>動態文字廣告</td>
-            <td></td>
+            <td>標題區圖片</td>
+            <td><input type="file" name="img" id=""></td>
+        </tr>
+        <tr>
+            <td>標題區替代文字</td>
+            <td><input type="text" name="text" id=""></td>
         </tr>
     </table>
-    <div><input type="text"></div>
+   <!-- 打法:div>input:submit + input>reset -->
+    <div><input type="submit" value="送出"><input type="reset" value="重置"></div>
     
 </form>

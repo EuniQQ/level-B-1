@@ -20,10 +20,11 @@ include_once "base.php";
 </head>
 
 <body>
-    <div id="cover" style="display:none; ">
+    
+    <div id="cover" style="display:none; "><!-- 預設隱藏的modal -->
         <div id="coverr">
             <a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;"
-                onclick="cl(&#39;#cover&#39;)">X</a>
+            onclick="cl(&#39;#cover&#39;)">X</a><!--參照js.js中function cl(),關閉並淡出  -->
             <div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
         </div>
     </div>
