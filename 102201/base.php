@@ -146,7 +146,8 @@ class DB{
         header("location:".$url);
     }
     
-    $Total=new DB('total');
+
+    $Total=new DB('total');  //用大寫表示後面常用到的變數，代表是資料表
     $Bottom=new DB('bottom');
     $Title=new DB('title');
     $Ad=new DB('ad');
@@ -156,17 +157,19 @@ class DB{
     $Adimin=new DB('adimin');
     $Menu=new DB('menu');
 
-    // 寫法二: echo $Total->find(1)['Total'];
+    //試試能不能將資料表撈出來:
+    //寫法二: echo $Total->find(1)['Total'];  
     //寫法一:    
     // echo $total['total'];
     // print_r($Total->all());
 
+
     //如果SESSION不存在，資料表訪客人數+1
-    if(!isset($_SESSION['total'])){
-        $total=$Total->find(1);
+    if(!isset($_SESSION['total'])){  //沒session時，只要換分頁只要讀到base都會訪客+1
+        $total=$Total->find(1); //把total欄位的數字抓出來+1再存回去
         $total['total']++;
         $Total->save($total);
-        $_SESSION['total']=$total['total'];
+        $_SESSION['total']=$total['total']; //再建一個session紀錄最新的total值
     }
 
 
