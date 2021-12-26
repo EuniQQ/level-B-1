@@ -7,7 +7,7 @@
     	<tbody>
         <!-- 標題列     -->
         <tr class="yel">
-        	    <td width="45%">網站標題</td>
+        	    <td width="45%"><?=$DB->title?></td>
                 <td width="23%">替代文字</td>
                 <td width="7%">顯示</td>
                 <td width="7%">刪除</td>
@@ -19,8 +19,11 @@
      <tbody><tr>
       <td width="200px"><input type="button" 
                                                            
-          onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/title.php&#39;)" value="新增網站標題圖片"></td>
-          <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
+          onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/title.php&#39;)" 
+          value="<?=$DB->button?>"></td>
+          <td class="cent">
+              <input type="submit" value="修改確定">
+              <input type="reset" value="重置"></td>
         <!-- 彈出視窗modal(完整op function寫在js.js)  -->
         <!-- 在bake.php可找到，預設為display-none，所以看不到 -->
         </tr>
