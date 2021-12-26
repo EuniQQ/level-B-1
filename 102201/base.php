@@ -192,6 +192,11 @@ class DB{
 }   
 
 
+    function dd($array){
+        echo "<pre>";
+       print_r($array);
+        echo "</pre>";
+    }
     
     //function to 要寫在DB外面
     function to ($url){
@@ -213,7 +218,8 @@ class DB{
     //$tt=(isset($_GET['do']))?$_GET['do']:''; (另一種寫法)
      //$tt=isset($_GET['do'])??''; (另一種寫法)
     $tt=$_GET['do']??''; //先設一個變數，若有do這個參數就使用do，若沒有就空白
-    switch($_GET['do']){
+
+    switch($tt){
         case "title":
             $DB=$Title;
         break;

@@ -1,13 +1,13 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
         <!-- <p class="t cent botli">網站標題管理</p> -->
         <!-- <p class="t cent botli"><?=$titleStr['title'];?></p> -->
-        <p class="t cent botli"><?=$titleStr[$do];?></p>
+        <p class="t cent botli"><?=$DB->title;?></p>
         <form method="post" target="back" action="?do=tii">
     <table width="100%">
     	<tbody>
         <!-- 標題列     -->
         <tr class="yel">
-        	    <td width="45%"><?=$DB->title?></td>
+        	    <td width="45%"><?=$DB->header?></td>
                 <td width="23%">替代文字</td>
                 <td width="7%">顯示</td>
                 <td width="7%">刪除</td>
