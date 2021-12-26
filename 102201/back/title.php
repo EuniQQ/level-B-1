@@ -1,5 +1,7 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-        <p class="t cent botli">網站標題管理</p>
+        <!-- <p class="t cent botli">網站標題管理</p> -->
+        <!-- <p class="t cent botli"><?=$titleStr['title'];?></p> -->
+        <p class="t cent botli"><?=$titleStr[$do];?></p>
         <form method="post" target="back" action="?do=tii">
     <table width="100%">
     	<tbody>
@@ -17,7 +19,8 @@
      <tbody><tr>
       <td width="200px"><input type="button" 
                                                            
-          onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/title.php&#39;)" value="新增網站標題圖片"></td><td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
+          onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/title.php&#39;)" value="新增網站標題圖片"></td>
+          <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
         <!-- 彈出視窗modal(完整op function寫在js.js)  -->
         <!-- 在bake.php可找到，預設為display-none，所以看不到 -->
         </tr>
