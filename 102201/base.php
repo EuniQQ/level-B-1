@@ -8,13 +8,16 @@ class DB{
     protected $user="root";
     protected $pw='';
     protected $pdo;
-    public $table;
-    public $title;
-    public $button;
-    public $header; //黃色nev的左邊標題列文字
-    public $append; //黃色nev的右邊一欄
+    //在base.php中的class DB中開放部份成員屬性為公開可讀取
+    public $table;  //資料表名稱
+    public $title;  //後台功能名稱
+    public $button; //新增功能按鈕
+    public $header; //黃色nev第一欄標題
+    public $append; //黃色nev第二欄標題
+    public $upload; //更新圖片彈出視窗用
     
-
+//在class DB中的建構式呼叫文字設定方法，
+//把各公開的屬性依資料表名稱設定為對應的內容
     public function __construct($table){
         $this->table=$table;   //意思是這個DB(table)就等於傳進來的table
         $this->pdo=new PDO($this->dsn,$this->user,$this->pw);
