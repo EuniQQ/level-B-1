@@ -1,7 +1,9 @@
+<?php include_once "../base.php";  //先匯入base.php來取得$DB變數  ?>
 <h3>新增標題圖片</h3>
 <hr>
-                              <!-- 有上傳檔案就需要打enctype="multipart/-form-data -->
-<form action="api/title.php" method="post" enctype="multipart/form-data">    
+             
+<form action="api/add.php?do=<?=$_GET['table'];?>" method="post" enctype="multipart/form-data">    
+                                      <!-- 有上傳檔案就需要打enctype="multipart/-form-data -->
     <table>
         <tr>
             <td>標題區圖片:</td>

@@ -18,7 +18,7 @@ class DB{
     public function __construct($table){
         $this->table=$table;   //意思是這個DB(table)就等於傳進來的table
         $this->pdo=new PDO($this->dsn,$this->user,$this->pw);
-        $this->setStr($table);  //在建構資料表時，請去執行這個類別裡面setStr()這個function，並把$table帶入
+        $this->setStr($table);  //在建構資料表時，去執行這個類別裡面setStr()這個function，並把$table帶入
          }
 //接著進入下面switch case設成對應的文字
     private function setStr($table){
@@ -87,7 +87,7 @@ class DB{
 
     // function all --- 可能有很多參數(不定參數)
     public function all(...$arg){
-        $sql="SELECT * FROM $this ->table "; //先不加WHERE因做分頁時可能有沒有條件的情況
+        $sql="SELECT * FROM $this->table "; //先不加WHERE因做分頁時可能有沒有條件的情況
 
 
         switch(count($arg)){
