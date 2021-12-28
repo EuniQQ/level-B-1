@@ -2,7 +2,7 @@
 include_once "../base.php";
 
 foreach($_POST['id'] as $key => $id){
-    if(isset($_POST['del']) && in_array($id,$_POST['del'])){
+    if(isset($_POST['del']) && in_array($id,$_POST['del'])){ //跑迴圈時判斷id有沒有在del的陣列中
         //刪除
         $DB->del($id);
 
@@ -18,6 +18,12 @@ foreach($_POST['id'] as $key => $id){
 
                 //針對單選的項目只要判斷是否相符即可
                 $data['sh']=($_POST['sh']==$id)?1:0;
+                //原生寫法:if($_POST['sh']==$id{   前台傳過來要顯示的那筆id是否=現在迴圈跑的這筆id
+                          //  $data['sh']=1;
+                          //  }else{
+                          //  $data['sh']=0;
+                     }
+                }
             break;
             case "admin":
                 $data['acc']=$_POST['acc'][$key];

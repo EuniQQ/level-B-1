@@ -223,9 +223,7 @@ class DB{
     $tt=$_GET['do']??''; //先設一個變數，若有do這個參數就使用do，若沒有就空白
 
     switch($tt){
-        case "title":
-            $DB=$Title;
-        break;
+        
         case "ad":
             $DB=$Ad;
         break;
@@ -249,6 +247,9 @@ class DB{
         break;
         case "menu":
             $DB=$Menu;
+        break;
+        default:  //default後面不能接參數
+            $DB=$Title; //除了以上八張資料表，不管是不是title，預設$DB這變數都叫title
         break;
 
     }
