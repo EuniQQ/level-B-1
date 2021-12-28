@@ -8,8 +8,7 @@ foreach($_POST['id'] as $key => $id){
 
     }else{
         //更新
-        //先取出該筆資料
-        $data=$DB->find($id);
+        $data=$DB->find($id);   //先取出該筆資料
 
         //針對不同的資料表進行相應的資料內容處理
         switch($DB->table){
@@ -18,12 +17,10 @@ foreach($_POST['id'] as $key => $id){
 
                 //針對單選的項目只要判斷是否相符即可
                 $data['sh']=($_POST['sh']==$id)?1:0;
-                //原生寫法:if($_POST['sh']==$id{   前台傳過來要顯示的那筆id是否=現在迴圈跑的這筆id
+                //原生寫法:if($_POST['sh']==$id{   前台傳過來要顯示的那筆id是否==現在迴圈跑的這筆id
                           //  $data['sh']=1;
                           //  }else{
                           //  $data['sh']=0;
-                     }
-                }
             break;
             case "admin":
                 $data['acc']=$_POST['acc'][$key];

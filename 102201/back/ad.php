@@ -2,7 +2,7 @@
         <!-- <p class="t cent botli">網站標題管理</p> -->
         <!-- <p class="t cent botli"><?=$titleStr['title'];?></p> -->
         <p class="t cent botli"><?=$DB->title;?></p>
-        <form method="post" action="api/edit_title.php">
+        <form method="post" action="api/edit.php?do=<?=$DB->title;?>">
     <table width="100%">
     	<tbody>
         <!-- 標題列     -->
@@ -26,14 +26,14 @@
             <!-- 只要一次送出多筆，name值一律加中誇括號 -->
 
             <tr>  
-                <td width="23%">
+                <td >
                     <input type="text" name="text[]" value="<?=$row['text'];?>">
                 </td>
-                <td width="7%">
+                <td >
                     <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=$checked?>>
                 <!-- $checked是預設一筆選取，如果兩筆都是1(顯示)會以最下面一筆為準 -->
                 </td>
-                <td width="7%">
+                <td >
                     <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                     <!-- name是陣列型態才能一次刪多筆 -->
                 </td>
@@ -52,7 +52,7 @@
      <tbody><tr>
       <td width="200px"><input type="button"                                                  
           onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/ad.php&#39;)" 
-          value="更新圖片">
+          value="<?=$DB->button;?>">
         </td>
           <td class="cent">
               <input type="submit" value="修改確定">

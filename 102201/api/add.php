@@ -48,6 +48,7 @@ switch($DB->table){
         break;       
 }
 
+//因為有帶do的值過來，所以$DB這個變數一定存在($DB是bake.php的大變數)
 $DB->save($data);
 to("../back.php?do=".$DB->table)
 

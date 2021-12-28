@@ -1,6 +1,5 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
         <!-- <p class="t cent botli">網站標題管理</p> -->
-        <!-- <p class="t cent botli"><?=$titleStr['title'];?></p> -->
         <p class="t cent botli"><?=$DB->title;?></p>
         <!-- 表單送出的action為同一個edit.php，為了區別是那個功能送出的資料， -->
         <!-- 所以我們加上了資料表名讓api可以識別 -->
