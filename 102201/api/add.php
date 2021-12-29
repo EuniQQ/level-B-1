@@ -43,7 +43,7 @@ switch($DB->table){
         // 因為modal裡是新增主選單(parent=0)
         break;
             
-        default: //欄位格式相同的資料表統一在default區段處理
+    default: //欄位格式相同的資料表統一在default區段處理
         $data['text']=$_POST['text']??'';
         //並不是每個modal裡都有文字欄位的需求，所以加入判斷$_POST['text']這個變數是否存在，
         //有就使用，不存在就空著

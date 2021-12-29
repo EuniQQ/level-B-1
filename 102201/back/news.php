@@ -30,17 +30,12 @@
                     <input type="text" name="text[]" value="<?=$row['text'];?>">
                 </td>
                 <td >
-                    <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=$checked?>>
-                <!-- $checked是預設一筆選取，如果兩筆都是1(顯示)會以最下面一筆為準 -->
+                    <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=$checked?>>      
                 </td>
                 <td >
                     <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
-                    <!-- name是陣列型態才能一次刪多筆 -->
                 </td>
-              
-            <!-- 只要牽扯到更新，就要知道對象是誰(對應的id) -->
-            <!-- 在每筆資料增加一個隱藏欄位，為了得到id -->
-            <input type="hidden" name="id[]" value="<?=$row['id'];?>">
+                     <input type="hidden" name="id[]" value="<?=$row['id'];?>">
  
          
             </tr>
@@ -51,7 +46,7 @@
            <table style="margin-top:40px; width:70%;">
      <tbody><tr>
       <td width="200px"><input type="button"                                                  
-          onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/ad.php?table=<?=$DB->table;?>&#39;)" 
+          onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/<?=$DB->table;?>.php?table=<?=$DB->table;?>&#39;)" 
           value="<?=$DB->button;?>">
         </td>
           <td class="cent">

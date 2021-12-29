@@ -56,6 +56,11 @@ class DB{
             $this->button="";
             $this->header="頁尾版權資料";
             break;
+            case "news";
+            $this->title="最新消息資料管理";
+            $this->button="新增最新消息資料";
+            $this->header="最新消息資料內容";
+            break;
             case "admin";
             $this->title="管理者帳號管理";
             $this->button="新增管理者帳號";
