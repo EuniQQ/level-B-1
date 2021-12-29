@@ -51,7 +51,7 @@
            <table style="margin-top:40px; width:70%;">
      <tbody><tr>
       <td width="200px"><input type="button"                                                  
-          onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/ad.php&#39;)" 
+          onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/ad.php?table=<?=$DB->table;?>&#39;)" 
           value="<?=$DB->button;?>">
         </td>
           <td class="cent">
