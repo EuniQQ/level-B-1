@@ -7,7 +7,8 @@
         <tr>
             <td>最新消息資料</td>
             <td>
-                <textarea name="text" cols="30" rows="10"></textarea>
+                <!-- textarea的特性：若程式碼換行，顯示結果就會有一個空白 -->
+                <textarea name="text" style="width:95%;height:60px;"></textarea>
             </td>
         </tr>
     </table>

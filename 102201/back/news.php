@@ -2,7 +2,7 @@
         <!-- <p class="t cent botli">網站標題管理</p> -->
         <!-- <p class="t cent botli"><?=$titleStr['title'];?></p> -->
         <p class="t cent botli"><?=$DB->title;?></p>
-        <form method="post" action="api/edit.php?do=<?=$DB->title;?>">
+        <form method="post" action="../api/edit.php?do=<?=$DB->news;?>">
     <table width="100%">
     	<tbody>
         <!-- 標題列     -->
@@ -19,6 +19,7 @@
            //老師習慣以$rows代表多筆、複數的
             $rows=$DB->all();
             foreach($rows as $row){  //很多筆的其中一筆
+                $checked=($row['sh']==1)?'checked':'';
         ?>
 
             <!-- 預設情況下，表單input的name欄位中的會被放到$_POST的KEY值去。 -->
@@ -27,7 +28,7 @@
 
             <tr>  
                 <td >
-                    <input type="text" name="text[]" value="<?=$row['text'];?>">
+                    <textarea name="text" style="width:95%;height:60px" ><?=$row['text'];?></textarea>
                 </td>
                 <td >
                     <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=$checked?>>      
@@ -36,8 +37,7 @@
                     <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                 </td>
                      <input type="hidden" name="id[]" value="<?=$row['id'];?>">
- 
-         
+
             </tr>
 
         <?php  } ?>
