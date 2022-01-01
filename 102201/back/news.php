@@ -2,7 +2,7 @@
         <!-- <p class="t cent botli">網站標題管理</p> -->
         <!-- <p class="t cent botli"><?=$titleStr['title'];?></p> -->
         <p class="t cent botli"><?=$DB->title;?></p>
-        <form method="post" action="../api/edit.php?do=<?=$DB->news;?>">
+        <form method="post" action="../api/edit.php?do=<?=$DB->table;?>">
     <table width="100%">
     	<tbody>
         <!-- 標題列     -->

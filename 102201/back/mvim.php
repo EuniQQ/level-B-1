@@ -8,7 +8,7 @@
   
         <!-- 標題列     -->
         <tr class="yel">
-        	    <td width="70%"><?=$DB->header?></td>
+        	    <td width="40%"><?=$DB->header?></td>
                 <td width="10%">顯示</td>
                 <td width="10%">刪除</td>
                 <td></td>

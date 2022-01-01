@@ -34,7 +34,7 @@ foreach($_POST['id'] as $key => $id){
                 $data['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
             break;
             default:
-            //ad,,news,image,mvim
+            //ad,news,image,mvim
                 //針對需要寫入字串的項目要先判斷是否有text這個陣列，
                 //再依照key值取得對應的資料寫入資料表
                 $data['text']=isset($_POST['text'])?$_POST['text'][$key]:'';

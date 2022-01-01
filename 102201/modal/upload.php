@@ -1,10 +1,12 @@
-<h3>更新標題區圖片</h3>
+<?php include_once "../base.php";  //先匯入base.php來取得$DB變數  ?>
+
+<h3>更新<?=$DB->upload;?></h3>
 <hr>
                               <!-- 有上傳檔案就需要打enctype="multipart/-form-data -->
-<form action="api/upload.php" method="post" enctype="multipart/-form-data">    
+<form action="api/upload.php?do=<?=$DB->table;?>" method="post" enctype="multipart/-form-data">    
     <table>
         <tr>
-            <td>標題區圖片:</td>
+            <td><?=$DB->upload;?>:</td>
             <td><input type="file" name="img"></td> 
             <!-- name欄位跟資料表是一致的 -->
         </tr>

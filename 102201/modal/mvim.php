@@ -1,4 +1,4 @@
-<?php include_once "../base.php";  //先匯入base.php來取得$DB變數  ?>
+
 <h3>新增動畫圖片</h3>
 <hr>
              
