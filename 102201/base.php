@@ -108,21 +108,22 @@ class DB{
                     $tmp[]=" `key`='value'";
                 }
 
-                $sql .=" WHERE ".implode("AND".$arg[0])." ".$arg[1];
+                $sql .=" WHERE ".implode(" AND ".$tmp)." ".$arg[1];
 
                 break;
 
             case 1:  //一個參數的狀況
-                if (is_array($arg[0])){
+                if(is_array($arg[0])){
+
                     foreach($arg[0] as $key => $value){
                         $tmp[]="`$key`='$value'";
                     }
-                    $sql .=" WHERE ".implode(" AND ".$arg[0]);
+                    $sql .=" WHERE ".implode(" AND ",$tmp);
                 }else{
-                    $sql .=$arg[1];
+                    $sql .= $arg[0];
 
                 }
-                break;
+            break;
         }                              //取多筆
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
