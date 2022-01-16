@@ -75,17 +75,31 @@ include_once "base.php";
                     onclick="lo(&#39;back.php&#39;)">管理登入</button>
                 <div style="width:89%; height:480px;" class="dbor">
                     <span class="t botli">校園映象區</span>
+                        <div class="t" onclick="pp(1)"><img src="icon/up.jpg"></div>
+                        <?php
+                            $imgs=$Image->all(['sh'=>1]); //找出$Image資料表中顯示的照片
+                            foreach($imgs as $key => $img){ //用key=>value方式顯示陣列內容
+                        ?>
+                        <div class="im cent" id="ssaa<?=$key;?>"> 
+                        <!-- 加上class=im,為了配合下面$(".im").hide() ; class=cent為了置中-->
+                            <img src="img/<?=$img['img'];?>" style="width:150px;height:103px;border:3px solid orange;margin:5px">
+                            <!-- 加上id=ssaa並加上key值(為了配合下面$("#ssaa" + t).show()-->
+                        </div>
+                        <?php
+                            }
+                        ?>
+                        <div class="t" onclick="pp(2)"><img src="icon/dn.jpg"></div>
                     <script>
                     var nowpage = 0,
-                        num = 0;
+                        num = <?=$Image->math("count","*",['sh'=>1]);?>; //num指的是要顯示的圖片張數
 
                     function pp(x) {
                         var s, t;
-                        if (x == 1 && nowpage - 1 >= 0) {
-                            nowpage--;
+                        if (x == 1 && nowpage - 1 >= 0) {  // x代表負責控制上下頁的箭頭 
+                            nowpage--; //表示往上
                         }
-                        if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
-                            nowpage++;
+                        if (x == 2 && (nowpage + 3) < num ) {
+                            nowpage++; //表示往下
                         }
                         $(".im").hide()
                         for (s = 0; s <= 2; s++) {
@@ -93,7 +107,7 @@ include_once "base.php";
                             $("#ssaa" + t).show()
                         }
                     }
-                    pp(1)
+                    pp(1)  //瀏覽器載入時先進行一次pp(1)
                     </script>
                 </div>
             </div>
