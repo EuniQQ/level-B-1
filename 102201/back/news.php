@@ -13,11 +13,15 @@
                 <td width="10%">刪除</td>
                 
             </tr>
-
-
         <?php
            //老師習慣以$rows代表多筆、複數的
-            $rows=$DB->all("limit $start,$div");
+            $all=$DB->math('count','*');
+            $div=4;
+            $pages=ceil($all/$div);
+            $now=$_GET['p']??1;
+            $start=($now-1)*$div;
+
+            $row=$DB->all("limit $start,$div");
             foreach($rows as $row){  //很多筆的其中一筆
                 $checked=($row['sh']==1)?'checked':'';
         ?>
@@ -41,10 +45,34 @@
 
             </tr>
 
-        <?php  } ?>
+            <?php  } ?>
 
-    </tbody></table>
-           <table style="margin-top:40px; width:70%;">
+        </tbody>
+    </table>
+
+    <div class="cent">
+        <?php
+            if(($now-1)>0){
+                $p=$now-1;
+                echo "<a href='?do={$DB->table}&p=$p'> &lt; </a>";   
+            }
+            for($i=1;$i<=$pages;$i++){
+            if($i==$now){
+                $fontsize="24px";
+            }else{
+                $fontsize="16px";
+            }
+             echo "<a href='?do={$DB->table}&p=$i' style='font-size:$fontsize'> $i </a>";
+            }
+
+            if(($now+1)<=$pages){
+                $p=$now+1;
+                echo "<a href='?do={$DB->table}&p=$p'> &gt; </a>";   
+            }
+        ?>
+        </div>        
+
+        <table style="margin-top:40px; width:70%;">
      <tbody><tr>
       <td width="200px"><input type="button"                                                  
           onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/<?=$DB->table;?>.php?table=<?=$DB->table;?>&#39;)" 
