@@ -41,15 +41,33 @@
 
                 	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
                     		<span class="t botli">最新消息區
-                            								</span>
+                            	<?php
+									if($News->math('count','*',['sh'=>1])>5){ //計算News資料表中設定顯示的是否大於五
+										echo "<a href='index.php?do=news' style='float:right'>more...<a>";
+									} 
+								?>
+							</span>
+
                             <ul class="ssaa" style="list-style-type:decimal;">
-                            	                            </ul>
+							<?php
+							$news=$News->all(['sh'=>1],"LIMIT 5");  //找出顯示的最新消息前五筆
+								foreach($news as $n){
+									echo "<li>";
+									echo mb_substr($n['text'],0,20);  //因為是中文使用mb_substr()取每一筆從0開始抓20個字顯示
+									echo "<div class='all' style='display:none'>{$n['text']}</div>";  //把子元素隱藏起來
+									echo "</li>";  //把每一筆消息的文字放進li標籤中
+								}
+							?>
+							</ul>
+
         			<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
-						$(".ssaa li").hover(
+						$(".ssaa li").hover( //指.ssaa下面子層所有的li
 							function ()
 							{
-								$("#altt").html("<pre>"+$(this).children(".all").html()+"</pre>")
+								$("#altt").html("<pre>"+$(this).children(".all").html()+"</pre>") 
+								//altt用.html()裡面的內容取代
+								//this是hover滑到的那一行的子層class=all的元素中的所有內容，html()中空白表示這個元素的所有內容
 								$("#altt").show()
 							}
 						)

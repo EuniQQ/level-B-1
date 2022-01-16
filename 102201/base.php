@@ -28,7 +28,7 @@ class DB{
         switch($table){
             case "title";
             $this->title="網站標題管理";
-            $this->button="新增網站標題";
+            $this->button="新增網站標題圖片";
             $this->header="網站標題";
             $this->append="替代文字";
             $this->upload="網站標題圖片";
@@ -53,7 +53,7 @@ class DB{
             case "total";
             $this->title="進站總人數管理";
             $this->button="";
-            $this->header="進站總人數";
+            $this->header="進站總人數:";
             break;
             case "bottom";
             $this->title="頁尾版權資料管理";
@@ -69,7 +69,7 @@ class DB{
             $this->title="管理者帳號管理";
             $this->button="新增管理者帳號";
             $this->header="帳號";
-            $this->append="密碼"; 
+            $this->append="密碼";
             break;
             case "menu";
             $this->title="選單管理";
@@ -91,7 +91,7 @@ class DB{
 
             $sql .= implode(" AND ",$tmp);  //AND前後記得加空格，用AND將陣列裡每一筆資料串起來
         }else{
-            $sql .= " `id`='$id' "; //意思SELECT * FROM $this->table WHERE 加上 `id`='$id'
+            $sql .= " `id`='$id'"; //意思SELECT * FROM $this->table WHERE 加上 `id`='$id'
         }
          // function q ---- 萬用查詢，直接把整段sql放進去讓它查詢，查詢後取一筆就好  
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
@@ -105,10 +105,10 @@ class DB{
         switch(count($arg)){
             case 2: //兩個參數的狀況
                 foreach($arg[0] as $key => $value){
-                    $tmp[]=" `key`='value'";
+                    $tmp[]="`$key`='$value'";
                 }
 
-                $sql .=" WHERE ".implode(" AND ".$tmp)." ".$arg[1];
+                $sql .=" WHERE ".implode(" AND ",$tmp)." ".$arg[1];
 
                 break;
 
@@ -118,14 +118,15 @@ class DB{
                     foreach($arg[0] as $key => $value){
                         $tmp[]="`$key`='$value'";
                     }
-                    $sql .=" WHERE ".implode(" AND ",$tmp);
+                    $sql .= " WHERE ".implode(" AND ",$tmp);
                 }else{
                     $sql .= $arg[0];
 
                 }
             break;
-        }                              //取多筆
-        return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        } 
+             //取多筆
+             return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // function math ---- 用以計算的(甚麼方式，計算甚麼欄位，條件EX男女、年紀...)
@@ -138,19 +139,19 @@ class DB{
                     $tmp[]="`$key`='$value'";
                 }
 
-                $sql .=" WHERE ".implode("AND".$arg[0])." ".$arg[1];
+                $sql .=" WHERE ".implode(" AND ",$tmp)." ".$arg[1];
 
                 break;
             case 1:
                 if(is_array($arg[0])){
-                    foreach($arg[0] as $key =>$value){
-                        $tmp[]="`key`='$value'";
+                    foreach($arg[0] as $key => $value){
+                        $tmp[]="`$key`='$value'";
                     }
-                    $sql .="WHERE".implode("AND".$arg[0]);
+                    $sql .= " WHERE ".implode(" AND ",$tmp);
                 }else{
-                    $sql .=$arg[1];
+                    $sql .= $arg[0];
                 }  
-                break;  
+                break;
         }
                                        //math只針對一個欄位計算，所以直接取欄位
                                        //僅針對一個欄位並僅會回傳一個資料的情況
@@ -161,7 +162,7 @@ class DB{
     public function save($array){
         if(isset($array['id'])){
             //update
-            foreach($array as $key =>$value){
+            foreach($array as $key => $value){
                 $tmp[]="`$key`='$value'";
             }
 
@@ -188,9 +189,9 @@ class DB{
                $tmp[]="`$key`='$value'";
            }
     
-           $sql .=implode("AND",$tmp);
+           $sql .= implode(" AND ",$tmp);
        }else{
-           $sql .= "`id`='$id'";
+           $sql .= " `id`='$id'";
        }
                           //同save，只需知道是否執行成功
        return $this->pdo->exec($sql);

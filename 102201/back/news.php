@@ -17,7 +17,7 @@
 
         <?php
            //老師習慣以$rows代表多筆、複數的
-            $rows=$DB->all();
+            $rows=$DB->all("limit $start,$div");
             foreach($rows as $row){  //很多筆的其中一筆
                 $checked=($row['sh']==1)?'checked':'';
         ?>
@@ -28,7 +28,8 @@
 
             <tr>  
                 <td >
-                    <textarea name="text" style="width:95%;height:60px" ><?=$row['text'];?></textarea>
+                    <!-- 新增的消息文字可能不只一筆，所以text要加[] -->
+                    <textarea name="text[]" style="width:95%;height:60px" ><?=$row['text'];?></textarea>
                 </td>
                 <td >
                     <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=$checked?>>      
