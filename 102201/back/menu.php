@@ -17,7 +17,7 @@
 
         <?php
            //以$rows代表多筆、複數的
-            $rows=$DB->all();
+            $rows=$DB->all(['parent'=>0]);
             foreach($rows as $row){  //很多筆的其中一筆
                 $checked=($row['sh']==1)?'checked':'';
         ?>
@@ -30,12 +30,12 @@
 
                 <!-- 選單連結網址 -->
                 <td >
-                    <input type="password" name="href[]" value="<?=$row['href'];?>">
+                    <input type="text" name="href[]" value="<?=$row['href'];?>">
                 </td>
 
                 <!-- 次選單名稱 -->
                 <td>
-
+                    <?=$DB->math('count','*',['parent'=>$row['id']]);?>
                 </td>
 
                 <!-- 顯示 -->
@@ -51,7 +51,7 @@
                 <td>
                 <!-- 從back/image.php複製以下button來改 -->
                 <input type="button"
-                onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/upload.php?do=<?=$DB->table;?>&id=<?=$row['id'];?>&#39;)" 
+                onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/submenu.php?id=<?=$row['id'];?>&#39;)" 
                 value="編輯次選單">   
                 </td>
          
@@ -61,7 +61,8 @@
 
     </tbody></table>
            <table style="margin-top:40px; width:70%;">
-     <tbody><tr>
+     <tbody>
+         <tr>
       <td width="200px"><input type="button"                                                  
           onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/<?=$DB->table;?>.php?table=<?=$DB->table;?>&#39;)" 
           value="<?=$DB->button;?>">
@@ -72,7 +73,7 @@
         <!-- 彈出視窗modal(完整op function寫在js.js)  -->
         <!-- 在bake.php可找到，預設為display-none，所以看不到 -->
         </tr>
-    </tbody></table>    
-
-        </form>
-                                    </div>
+    </tbody>
+</table>    
+</form>
+</div>

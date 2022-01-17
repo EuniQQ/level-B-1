@@ -36,7 +36,18 @@ include_once "base.php";
                 </div>
                 <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     <span class="t">進站總人數 :<?=$Total->find(1)['total'];?></span>
-                                                  <!-- 去Total資料表，找出id為1的資料，把total欄位的內容顯示出來 -->
+                    <!-- 去Total資料表，找出id為1的資料，把total欄位的內容顯示出來 -->
+
+                    <?php
+                        $mains=$Menu->all(['parent'=>0,'sh'=>1]);
+                        foreach($mains as $main){
+                            echo "<a href=''>";
+                            echo "";
+                            echo "</a>";
+                        }
+
+
+                    ?>
                 </div>
             </div>
             <?php
