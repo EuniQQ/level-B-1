@@ -8,7 +8,7 @@
         <!-- 標題列     -->
         <tr class="yel">
         	    
-                <td width="80%">替代文字</td>
+                <td width="80%"><?=$DB->header;?></td>
                 <td width="10%">顯示</td>
                 <td width="10%">刪除</td>
                 
@@ -21,7 +21,7 @@
             $now=$_GET['p']??1;
             $start=($now-1)*$div;
 
-            $row=$DB->all("limit $start,$div");
+            $rows=$DB->all("limit $start,$div");
             foreach($rows as $row){  //很多筆的其中一筆
                 $checked=($row['sh']==1)?'checked':'';
         ?>
@@ -31,12 +31,12 @@
             <!-- 只要一次送出多筆，name值一律加中誇括號 -->
 
             <tr>  
-                <td >
+                <td>
                     <!-- 新增的消息文字可能不只一筆，所以text要加[] -->
-                    <textarea name="text[]" style="width:95%;height:60px" ><?=$row['text'];?></textarea>
+                    <textarea name="text[]" style="width:95%;height:60px"><?=$row['text'];?></textarea>
                 </td>
                 <td >
-                    <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=$checked?>>      
+                    <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=$checked;?>>      
                 </td>
                 <td >
                     <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
@@ -80,7 +80,8 @@
         </td>
           <td class="cent">
               <input type="submit" value="修改確定">
-              <input type="reset" value="重置"></td>
+              <input type="reset" value="重置">
+            </td>
         <!-- 彈出視窗modal(完整op function寫在js.js)  -->
         <!-- 在bake.php可找到，預設為display-none，所以看不到 -->
         </tr>

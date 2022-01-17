@@ -5,28 +5,65 @@
         <div style="height:32px; display:block;"></div>
         <span class="t botli">更多最新消息顯示區</span>
         <!--正中央-->
-        <ul  style="list-style-type:decimal;"> 
-    		<?php
-                    $all=$DB->math('count','*');
-                    $div=4;
-                    $pages=ceil($all/$div);
-                    $now=$_GET['p']??1;
-                    $start=($now-1)*$div;
-        
-                    $row=$DB->all("limit $start,$div");
-                    
-    		        $news=$News->all(['sh'=>1],);  //刪掉limit 5 讓他全部顯示
-    			foreach($rows as $n){  //$news改為$rows
+            <?php
+                $all=$DB->math('count','*');
+                $div=5;  //每頁五筆最新消息
+                $pages=ceil($all/$div);
+                $now=$_GET['p']??1;
+                $start=($now-1)*$div;
+            ?>
+
+            <ol  style="list-style-type:decimal;" start="<?=($now-1)*$div+1;?>"> 
+                <!-- start=控制隨著分頁更改編碼 $now=目前頁碼，$div=每頁筆數-->
+
+            <?php
+                    $rows=$DB->all("limit $start,$div"); 
+        			foreach($rows as $n){  //$news改為$rows
     				echo "<li class='sswww'>";  //加上class,為了下面 $(".sswww").hover()
     				echo mb_substr($n['text'],0,20);  //因為是中文使用mb_substr()取每一筆從0開始抓20個字顯示
     				echo "<div class='all' style='display:none'>{$n['text']}</div>";  //把子元素隱藏起來
     				echo "</li>";  //把每一筆消息的文字放進li標籤中
     			}
     		?>
-    	</ul>
-    <div style="text-align:center;">
-        <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&lt;&nbsp;</a>
-        <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&nbsp;&gt;</a>
+    	</ol>
+
+        <style>
+            .more-news a{
+                text-decoration:none;
+            }
+
+            .more-news a:hover{
+                text-decoration:underline;
+            }
+        </style>
+
+    <div class="more-news" style="text-align:center;"> 
+        <?php
+            if(($now-1)>0){
+                $p=$now-1;
+                echo "<a href='?do={$DB->table}&p=$p'> &lt; </a>";   
+            }else{
+                echo "<a href='?do={$DB->table}&p=$now'> &lt; </a>";   //寫法一：仍有符號但留在當前頁(p1)
+                //echo "<a> &lt; </a>";   寫法二：拿掉連結，僅符合題意 //不能寫href="#"，會連到首頁 
+            }
+
+            for($i=1;$i<=$pages;$i++){
+            if($i==$now){
+                $fontsize="24px";
+            }else{
+                $fontsize="16px";
+            }
+             echo "<a href='?do={$DB->table}&p=$i' 
+                 style='font-size:$fontsize'> $i </a>";
+            }
+            if(($now+1)<=$pages){
+                $p=$now+1;
+                echo "<a href='?do={$DB->table}&p=$p'> &gt; </a>"; 
+            }else{
+                echo "<a href='?do={$DB->table}&p=$now'> &gt; </a>"; 
+            }
+        ?>
+    </div>    
     </div>
 </div>
 
