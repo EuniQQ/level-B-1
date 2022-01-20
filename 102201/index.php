@@ -42,7 +42,7 @@ include_once "base.php";
                         $mains=$Menu->all(['parent'=>0,'sh'=>1]);
                         foreach($mains as $main){
                             echo "<a href=''>";
-                            echo "";
+                            echo $main['name'];
                             echo "</a>";
                         }
 
