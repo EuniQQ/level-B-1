@@ -75,6 +75,7 @@ body
 	line-height:30px;
 	padding:2px 10px 2px 10px;
 	margin:7px 1px 7px 1px;
+	height:30px;
 
 }
 .mainmu:hover
@@ -86,8 +87,9 @@ body
 .mw{ 
 	/* 解決點不到次選單的問題 */
 	position:relative;
+	top:-10px; 
+	/* 因為設定mouseout，子選單就會隱藏起來，所以使子選單提高，才能點到 */
 	z-index:99;
-	top:-10px;
 	left:120px;
 	display:none;
 }

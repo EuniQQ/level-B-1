@@ -38,7 +38,7 @@ include_once "base.php";
                     foreach($mains as $main){
                         echo "<div class='mainmu'>";  //Menu的name欄位就是選單名稱
                         echo "<a href='{$main['href']}'>";
-                        echo  $main['name'];
+                        echo $main['name'];
                         echo "</a>";
 
                         if($Menu->math('count','*',['parent'=>$main['id']])>0){  //表示是子選單
@@ -60,16 +60,14 @@ include_once "base.php";
                     <span class="t">進站總人數 :<?=$Total->find(1)['total'];?></span>
                     <!-- 去Total資料表，找出id為1的資料，把total欄位的內容顯示出來 -->
 
-                    <?php
+                    <!-- <?php
                         $mains=$Menu->all(['parent'=>0,'sh'=>1]);
                         foreach($mains as $main){
                             echo "<a href=''>";
                             echo $main['name'];
                             echo "</a>";
                         }
-
-
-                    ?>
+                    ?> -->
                 </div>
             </div>
             <?php
