@@ -36,10 +36,23 @@ include_once "base.php";
                     <?php
                     $mains=$Menu->all(['parent'=>0,'sh'=>1]);
                     foreach($mains as $main){
+                        echo "<div class='mainmu'>";  //Menu的name欄位就是選單名稱
                         echo "<a href='{$main['href']}'>";
-                        echo "<div class='mainmu'>{$main['name']}</div>";  //menu的name欄位就是選單名稱
+                        echo  $main['name'];
                         echo "</a>";
-                    }
+
+                        if($Menu->math('count','*',['parent'=>$main['id']])>0){  //表示是子選單
+                            $subs=$Menu->all(['parent'=>$main['id']]);
+                            echo "<div class='mw'>";
+                            foreach ($subs as $sub) {
+                                echo "<div class='mainmu2'>";  //Menu的name欄位就是選單名稱
+                                echo "<a href='{$sub['href']}'>{$sub['name']}</a>";
+                                echo "</div>";
+                            }
+                        echo "</div>";
+                     }
+                     echo "</div>";
+                }
                     ?>
 
                 </div>
@@ -75,7 +88,7 @@ include_once "base.php";
             <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 <!--右邊-->
                 <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
-                    onclick="lo(&#39;back.php&#39;)">管理登入</button>
+                    onclick="lo(&#39;?do=login&#39;)">管理登入</button>
                 <div style="width:89%; height:480px;" class="dbor">
                     <span class="t botli">校園映象區</span>
                         <div class="t" onclick="pp(1)"><img src="icon/up.jpg"></div>

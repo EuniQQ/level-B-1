@@ -2,8 +2,9 @@
 
 <h3>編輯次選單</h3>
 <hr>
-
+<!--直接在action中加入主選單的id傳遞給api-->
 <form action="api/submenu.php?main=<?=$_GET['id'];?>" method="post" enctype="multipart/form-data">
+    <!--為了方便jQuery的操作，先在table中建立一個id-->
     <table id="sub">
         <tr>
             <td>次選單名稱</td>
@@ -35,12 +36,18 @@
 </form>
 
 <script>
+    // 加入 onclick 事件呼叫 more() 程式來動態產生輸入欄位
     function more(){
+
+    //建立一個新增次選單的表單欄位字串，
+    //要注意的是欄位名稱不一樣，方便在api中做識別
         let row=`<tr>
                 <td><input type="text" name="name2[]" ></td>
                 <td><input type="text" name="href2[]" ></td>
                 <td></td>
             </tr>`
+
+         //使用jquery的append()方法把表單字串插入表格的後面
         $("#sub").append(row);
     }
 </script>
