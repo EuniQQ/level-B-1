@@ -1,5 +1,5 @@
 <?php include_once "../base.php";?>
-
+<!-- 老師的 -->
 <h3>編輯次選單</h3>
 <hr>
 <form action="api/submenu.php?main=<?=$_GET['id'];?>" method="post" enctype="multipart/form-data">
@@ -21,7 +21,7 @@
         </tr>
     <?php
     }
-    ?>        
+    ?>
     </table>
     <div>
         <input type="submit" value="修改確定">

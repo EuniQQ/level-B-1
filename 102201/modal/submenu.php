@@ -20,9 +20,9 @@
             <td><input type="text" name="name[]" value="<?=$sub['name'];?>"></td>
             <td><input type="text" name="href[]" value="<?=$sub['href'];?>"></td>
             <td><input type="checkbox" name="del[]" value="<?=$sub['id'];?>"></td>
-            <input type="hidden" name="id[]" value="<?=$sub['id'];?>"> 
-        </tr> 
-    <?php       
+            <input type="hidden" name="id[]" value="<?=$sub['id'];?>">
+        </tr>
+    <?php
     }
     ?>
     </table>
