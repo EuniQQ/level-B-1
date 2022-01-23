@@ -80,7 +80,8 @@ include_once "base.php";
                                 class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a>
                             </td>
                             <td><button onclick="location.replace('index.php?do=login')" 
-                                    style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
+                                    style="width:99%; margin-right:2px; height:50px;">管理登出</button>
+                            </td>
                                     <!-- 刪除cookie,修改replace網址 -->
                                     <!-- location.replace()是前端js導頁用的 ，可把 &#39; 改成單引號-->
                         </tr>
