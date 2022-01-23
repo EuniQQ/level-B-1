@@ -1,6 +1,10 @@
 ﻿<?php
 include_once "base.php";
 
+if(!isset($_SESSION['login'])){
+    to('index.php');  
+    //如果沒有登入就導回首頁，不能去後台
+}
 ?>
 
 
