@@ -124,7 +124,7 @@ class DB{
 
                 }
             break;
-        } 
+        }
              //取多筆
              return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -150,7 +150,7 @@ class DB{
                     $sql .= " WHERE ".implode(" AND ",$tmp);
                 }else{
                     $sql .= $arg[0];
-                }  
+                }
                 break;
         }
                                        //math只針對一個欄位計算，所以直接取欄位
@@ -177,7 +177,7 @@ class DB{
         }
                           //不需要回傳資料，只要告訴我執行新增/更新是否有成功
         return $this->pdo->exec($sql);
-}                         //用於執行外部程序並返回輸出的最後一行。如果沒有命令正確運行，它也會返回NULL。
+    }                         //用於執行外部程序並返回輸出的最後一行。如果沒有命令正確運行，它也會返回NULL。
 
     //function del
     public function del($id){  //$array改成$id
@@ -225,7 +225,7 @@ class DB{
     $Mvim=new DB('mvim');
     $Image=new DB('image');
     $News=new DB('news');
-    $Adimin=new DB('adimin');
+    $Admin=new DB('admin');
     $Menu=new DB('menu');
 
 
@@ -242,7 +242,7 @@ class DB{
             $DB=$Mvim;
         break;
         case "image":
-            $DB=$Image;          
+            $DB=$Image;
         break;
         case "total":
             $DB=$Total;
