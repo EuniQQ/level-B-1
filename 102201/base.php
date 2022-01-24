@@ -3,7 +3,7 @@ date_default_timezone_set("Asia/Taipei");
 session_start();
 
 //宣告DB
-class DB{  
+class DB{
     protected $dsn="mysql:host=localhost;charset=utf8;dbname=web21";
     protected $user="root";
     protected $pw='';
@@ -93,7 +93,7 @@ class DB{
         }else{
             $sql .= " `id`='$id'"; //意思SELECT * FROM $this->table WHERE 加上 `id`='$id'
         }
-         // function q ---- 萬用查詢，直接把整段sql放進去讓它查詢，查詢後取一筆就好  
+         
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -110,7 +110,7 @@ class DB{
 
                 $sql .=" WHERE ".implode(" AND ",$tmp)." ".$arg[1];
 
-                break;
+            break;
 
             case 1:  //一個參數的狀況
                 if(is_array($arg[0])){
@@ -141,7 +141,7 @@ class DB{
 
                 $sql .=" WHERE ".implode(" AND ",$tmp)." ".$arg[1];
 
-                break;
+            break;
             case 1:
                 if(is_array($arg[0])){
                     foreach($arg[0] as $key => $value){
@@ -182,13 +182,13 @@ class DB{
     //function del
     public function del($id){  //$array改成$id
         //del和find很像，都是針對單一筆資料，所以直接複製來貼上
-       $sql="DELETE FROM $this->table WHERE ";   //find改DELETE
-    
-       if (is_array($id)){
+       $sql="DELETE FROM $this->table WHERE ";   //SELECT*改DELETE
+
+       if(is_array($id)){
            foreach($id as $key => $value){
                $tmp[]="`$key`='$value'";
            }
-    
+
            $sql .= implode(" AND ",$tmp);
        }else{
            $sql .= " `id`='$id'";
@@ -197,13 +197,14 @@ class DB{
        return $this->pdo->exec($sql);
     }
 
+    // function q ---- 萬用查詢，直接把整段sql放進去讓它查詢，查詢後取一筆就好  
                    //跟all一樣
     public function q($sql){
        //return這個物件的pdo去查詢
        return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-}   
+
+}
 
 
     function dd($array){
@@ -213,12 +214,12 @@ class DB{
     }
     
     //function to 要寫在DB外面
-    function to ($url){
+    function to($url){
         header("location:".$url);
     }
     
 
-    $Total=new DB('total');  //用大寫表示後面常用到的變數，代表是資料表
+    $Total=new DB('total'); //用大寫表示後面常用到的變數，代表是資料表
     $Bottom=new DB('bottom');
     $Title=new DB('title');
     $Ad=new DB('ad');
@@ -265,8 +266,8 @@ class DB{
 
     }
     //試試能不能將資料表撈出來:
-    //寫法二: echo $Total->find(1)['Total'];  
-    //寫法一:    
+    //寫法二: echo $Total->find(1)['total'];
+    //寫法一: 
     // echo $total['total'];
     // print_r($Total->all());
 
